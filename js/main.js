@@ -156,9 +156,52 @@ console.log('-------------------');
 console.log('-------------------');
 
 // 0+1+2+3+4 = 10
+var nuo = 0;
+var iki = 5;
 var suma = 0;
-for ( var i=0; i<=5; i++ ) {
+for ( var i=nuo; i<=iki; i++ ) {
     suma = suma + i;
 }
+// i      suma
+// 0 => 0+'0'='00'
+// 1 => '00'+1='001'
+// ...
+// 5 => '0012345'
 
-console.log(suma);
+
+console.log('Suma intervale ('+nuo+', '+iki+'): '+suma);
+
+
+// teksto perrasymas is kito galo
+
+var tekstas = 'abcdef';
+var atbulas_tekstas = '';
+for ( var i=1; i<=tekstas.length; i++ ) {
+    atbulas_tekstas = atbulas_tekstas + tekstas[tekstas.length - i];
+}
+
+console.log( '"'+tekstas+'" -> "'+atbulas_tekstas+'"' );
+
+// dalyba intervale be liekanos
+
+var nuo = 0;
+var iki = 11;
+var daliklis = 3;
+var kiekis = 0;
+
+for ( var i=nuo; i<=iki; i++ ) {
+    if ( i % daliklis === 0 ) {
+        kiekis++;
+    }
+}
+
+// 0 -> 1
+// 1 -> 1
+// 2 -> 1
+// 3 -> 2
+
+// 11 -> 4
+// [0, 3, 6, 9]
+
+console.log( 'Skaičių intervale tarp '+nuo+' ir '+iki+', besidalinančių be liekanos iš '+daliklis+' yra '+kiekis+' vienetai.' );
+
