@@ -205,3 +205,137 @@ for ( var i=nuo; i<=iki; i++ ) {
 
 console.log( 'Skaičių intervale tarp '+nuo+' ir '+iki+', besidalinančių be liekanos iš '+daliklis+' yra '+kiekis+' vienetai.' );
 
+
+
+
+// Funkcijos
+
+console.log('-------------------');
+console.log('-------------------');
+console.log('-------------------');
+
+function tusciaFunkcija() {
+    return false;
+}
+
+console.log( tusciaFunkcija() );
+
+
+console.log('sumavimas -----------');
+function sumavimas( a, bbb ) {
+    var suma = a + bbb;
+    return suma;
+}
+
+
+var r = 2;
+var u = 5;
+console.log( sumavimas(r, u) );
+console.log( sumavimas(-8, 4) );
+console.log( sumavimas(0, 6) );
+
+console.log('daugyba -----------');
+
+function daugyba( a, b ) {
+    if ( typeof(a) !== 'number' ) {
+        return 'Pirmoji reiksme nera skaiciaus tipo.';
+    }
+    if ( typeof(b) !== 'number' ) {
+        return 'Antroji reiksme nera skaiciaus tipo.';
+    }
+    if ( isNaN(a) === true ) {
+        return 'Pirmoji reiksme bloga.';
+    }
+    if ( 'NaN' === ''+b ) {
+        return 'Antroji reiksme bloga.';
+    }
+    if ( isFinite(a) === false ) {
+        return 'Pirmoji reiksme yra begalybe.';
+    }
+    if ( 'Infinity' === ''+b ) {
+        return 'Antroji reiksme yra begalybe.';
+    }
+    
+    var sandauga = a * b;
+    return sandauga;
+}
+
+console.log( daugyba(0, 6) );
+console.log( daugyba(6, 6) );
+console.log( daugyba(9, -9) );
+console.log( daugyba('asd', 8) );
+console.log( daugyba(5156, 'asd') );
+console.log( daugyba('asd', 'wertwe') );
+console.log( daugyba(true, 8) );
+console.log( daugyba([], 8) );
+console.log( daugyba(NaN, 8) );
+console.log( daugyba(99, NaN) );
+console.log( daugyba(Infinity, 8) );
+console.log( daugyba(99, Infinity) );
+
+console.log('skaitmenuKiekisSkaiciuje ------------');
+
+function skaitmenuKiekisSkaiciuje( skaicius ) {
+    if ( typeof(skaicius) !== 'number' ) {
+        return 'Pateikta netinkamo tipo reikšmė.';
+    }
+    if ( isNaN(skaicius) === true ) {
+        return 'Tipas geras, bet reiksme prasta... :(';
+    }
+    if ( isFinite(skaicius) === false ) {
+        return 'Tipas geras, bet reiksme prasta... :(';
+    }
+
+    var teksinis_skaicius = ''+skaicius;
+    var kiekis = 0;
+    // skaiciu skaiciavimo logika...
+    for ( var i=0; i<teksinis_skaicius.length; i++ ) {
+        if ( teksinis_skaicius[i] === '0' ) {
+            kiekis++;
+        }
+        if ( teksinis_skaicius[i] === '1' ) {
+            kiekis++;
+        }
+        if ( teksinis_skaicius[i] === '2' ) {
+            kiekis++;
+        }
+        if ( teksinis_skaicius[i] === '3' ) {
+            kiekis++;
+        }
+        if ( teksinis_skaicius[i] === '4' ) {
+            kiekis++;
+        }
+        if ( teksinis_skaicius[i] === '5' ) {
+            kiekis++;
+        }
+        if ( teksinis_skaicius[i] === '6' ) {
+            kiekis++;
+        }
+        if ( teksinis_skaicius[i] === '7' ) {
+            kiekis++;
+        }
+        if ( teksinis_skaicius[i] === '8' ) {
+            kiekis++;
+        }
+        if ( teksinis_skaicius[i] === '9' ) {
+            kiekis++;
+        }
+    }
+
+    return 'Skaiciuje '+ skaicius + ' yra ' +kiekis + ' skaitmenu.';
+}
+
+console.log( skaitmenuKiekisSkaiciuje( true ) );
+console.log( skaitmenuKiekisSkaiciuje( 'asd' ) );
+console.log( skaitmenuKiekisSkaiciuje( NaN ) );
+console.log( skaitmenuKiekisSkaiciuje( Infinity ) );
+console.log( skaitmenuKiekisSkaiciuje( 5.28 ) );
+console.log( skaitmenuKiekisSkaiciuje( -5 ) );
+console.log( skaitmenuKiekisSkaiciuje( +5 ) );
+// 0.0000000000000000000000000000000000662607004
+console.log( skaitmenuKiekisSkaiciuje( -6.62607004E-34 ) );
+console.log( skaitmenuKiekisSkaiciuje( 6.62607004E-34 ) );
+console.log( skaitmenuKiekisSkaiciuje( Math.PI ) );
+console.log( skaitmenuKiekisSkaiciuje( 5 ) );
+console.log( skaitmenuKiekisSkaiciuje( 781 ) );
+console.log( skaitmenuKiekisSkaiciuje( 37060123456 ) );
