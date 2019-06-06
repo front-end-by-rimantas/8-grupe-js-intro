@@ -174,13 +174,42 @@ console.log('Suma intervale ('+nuo+', '+iki+'): '+suma);
 
 // teksto perrasymas is kito galo
 
-var tekstas = 'abcdef';
+var tekstas = 'abcd';
 var atbulas_tekstas = '';
+
 for ( var i=1; i<=tekstas.length; i++ ) {
     atbulas_tekstas = atbulas_tekstas + tekstas[tekstas.length - i];
 }
-
+// i    rez
+// 1 -> '' + 'abcd'[3] = 'd'
+// 2 -> 'd' + 'abcd'[2] = 'dc'
+// 3 -> 'dc' + 'abcd'[1] = 'dcb'
+// 4 -> 'dcb' + 'abcd'[0] = 'dcba'
+// 5 -> FINISH
 console.log( '"'+tekstas+'" -> "'+atbulas_tekstas+'"' );
+
+
+console.log('-------------');
+
+// antras budas kaip perrasyti teksta atbulai
+
+var tekstas = 'sedek';
+var atvirkscias = '';
+
+// logika, kuri apsuka zodi
+for ( var i=tekstas.length-1; i>=0; i-- ) {
+    atvirkscias = atvirkscias + tekstas[i];
+}
+// i    rez
+// 4 -> '' + 'sula'[3] = 'a'
+// 3 -> 'a' + 'sula'[2] = 'al'
+// 2 -> 'al' + 'sula'[1] = 'alu'
+// 1 -> 'alu' + 'sula'[0] = 'alus'
+// 0 -> 'alus' + 'sula'[-1] = 'alusundefined'
+// -1 -> FINISH
+
+console.log( atvirkscias );
+console.log('-------------');
 
 // dalyba intervale be liekanos
 
@@ -290,36 +319,25 @@ function skaitmenuKiekisSkaiciuje( skaicius ) {
     var kiekis = 0;
     // skaiciu skaiciavimo logika...
     for ( var i=0; i<teksinis_skaicius.length; i++ ) {
-        if ( teksinis_skaicius[i] === '0' ) {
-            kiekis++;
+        switch ( teksinis_skaicius[i] ) {
+            case '0': case '1': case '2': case '3': case '4':
+            case '5': case '6': case '7': case '8': case '9':
+                kiekis++;
+                break;
         }
-        if ( teksinis_skaicius[i] === '1' ) {
-            kiekis++;
-        }
-        if ( teksinis_skaicius[i] === '2' ) {
-            kiekis++;
-        }
-        if ( teksinis_skaicius[i] === '3' ) {
-            kiekis++;
-        }
-        if ( teksinis_skaicius[i] === '4' ) {
-            kiekis++;
-        }
-        if ( teksinis_skaicius[i] === '5' ) {
-            kiekis++;
-        }
-        if ( teksinis_skaicius[i] === '6' ) {
-            kiekis++;
-        }
-        if ( teksinis_skaicius[i] === '7' ) {
-            kiekis++;
-        }
-        if ( teksinis_skaicius[i] === '8' ) {
-            kiekis++;
-        }
-        if ( teksinis_skaicius[i] === '9' ) {
-            kiekis++;
-        }
+
+        // if ( teksinis_skaicius[i] === '0' ||
+        //      teksinis_skaicius[i] === '1' ||
+        //      teksinis_skaicius[i] === '2' ||
+        //      teksinis_skaicius[i] === '3' ||
+        //      teksinis_skaicius[i] === '4' ||
+        //      teksinis_skaicius[i] === '5' ||
+        //      teksinis_skaicius[i] === '6' ||
+        //      teksinis_skaicius[i] === '7' ||
+        //      teksinis_skaicius[i] === '8' ||
+        //      teksinis_skaicius[i] === '9' ) {
+        //     kiekis++;
+        // }
     }
 
     return 'Skaiciuje '+ skaicius + ' yra ' +kiekis + ' skaitmenu.';
@@ -332,10 +350,18 @@ console.log( skaitmenuKiekisSkaiciuje( Infinity ) );
 console.log( skaitmenuKiekisSkaiciuje( 5.28 ) );
 console.log( skaitmenuKiekisSkaiciuje( -5 ) );
 console.log( skaitmenuKiekisSkaiciuje( +5 ) );
-// 0.0000000000000000000000000000000000662607004
-console.log( skaitmenuKiekisSkaiciuje( -6.62607004E-34 ) );
-console.log( skaitmenuKiekisSkaiciuje( 6.62607004E-34 ) );
 console.log( skaitmenuKiekisSkaiciuje( Math.PI ) );
 console.log( skaitmenuKiekisSkaiciuje( 5 ) );
 console.log( skaitmenuKiekisSkaiciuje( 781 ) );
 console.log( skaitmenuKiekisSkaiciuje( 37060123456 ) );
+// 0.0000000000000000000000000000000000662607004
+console.log( skaitmenuKiekisSkaiciuje( -6.62607004E-34 ) );
+console.log( skaitmenuKiekisSkaiciuje( 6.62607004E-34 ) );
+console.log( skaitmenuKiekisSkaiciuje( -6.62607004E+34 ) );
+console.log( skaitmenuKiekisSkaiciuje( 6.62607004E+34 ) );
+
+console.log( skaitmenuKiekisSkaiciuje( -1.23E-2 ) );    // -0.0123 -> 5
+console.log( skaitmenuKiekisSkaiciuje( 1.23E-2 ) );     //  0.0123 -> 5
+console.log( skaitmenuKiekisSkaiciuje( -1.23E+2 ) );    // -123    -> 3
+console.log( skaitmenuKiekisSkaiciuje( 1.23E+2 ) );     //  123    -> 3
+
