@@ -316,39 +316,43 @@ function skaitmenuKiekisSkaiciuje( skaicius ) {
     }
 
     var teksinis_skaicius = ''+skaicius;
-    var kiekis = 0;
-    // skaiciu skaiciavimo logika...
-    for ( var i=0; i<teksinis_skaicius.length; i++ ) {
-        switch ( teksinis_skaicius[i] ) {
-            case '0': case '1': case '2': case '3': case '4':
-            case '5': case '6': case '7': case '8': case '9':
+    if ( teksinis_skaicius.indexOf('e') === -1 ) {
+        var kiekis = 0;
+        var skaitmuo = 0;
+        
+        // skaiciu skaiciavimo logika...
+        for ( var i=0; i<teksinis_skaicius.length; i++ ) {
+            skaitmuo = parseInt(teksinis_skaicius[i]);
+            if ( skaitmuo > -1 && skaitmuo < 10 ) {
                 kiekis++;
-                break;
+            }
         }
-
-        // if ( teksinis_skaicius[i] === '0' ||
-        //      teksinis_skaicius[i] === '1' ||
-        //      teksinis_skaicius[i] === '2' ||
-        //      teksinis_skaicius[i] === '3' ||
-        //      teksinis_skaicius[i] === '4' ||
-        //      teksinis_skaicius[i] === '5' ||
-        //      teksinis_skaicius[i] === '6' ||
-        //      teksinis_skaicius[i] === '7' ||
-        //      teksinis_skaicius[i] === '8' ||
-        //      teksinis_skaicius[i] === '9' ) {
-        //     kiekis++;
-        // }
+        return 'Skaiciuje '+ skaicius + ' yra ' +kiekis + ' skaitmenu.';
+    } else {
+        // standartine matematine israiska...
+        console.log(teksinis_skaicius);
+        // -6.62607004e+34
+            // -6.62607004
+            // +34
+        console.log( 'standartine matematine israiska' );
+        return ':(';
     }
-
-    return 'Skaiciuje '+ skaicius + ' yra ' +kiekis + ' skaitmenu.';
 }
+
+// skaicius = 123;
+// teksinis_skaicius = '123';
+
+// i
+// 0 -> 
+//      skaitmuo = parseInt('1') = 1;
+
 
 console.log( skaitmenuKiekisSkaiciuje( true ) );
 console.log( skaitmenuKiekisSkaiciuje( 'asd' ) );
 console.log( skaitmenuKiekisSkaiciuje( NaN ) );
 console.log( skaitmenuKiekisSkaiciuje( Infinity ) );
 console.log( skaitmenuKiekisSkaiciuje( 5.28 ) );
-console.log( skaitmenuKiekisSkaiciuje( -5 ) );
+console.log( skaitmenuKiekisSkaiciuje( -595 ) );
 console.log( skaitmenuKiekisSkaiciuje( +5 ) );
 console.log( skaitmenuKiekisSkaiciuje( Math.PI ) );
 console.log( skaitmenuKiekisSkaiciuje( 5 ) );
