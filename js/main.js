@@ -369,3 +369,71 @@ console.log( skaitmenuKiekisSkaiciuje( 1.23E-2 ) );     //  0.0123 -> 5
 console.log( skaitmenuKiekisSkaiciuje( -1.23E+2 ) );    // -123    -> 3
 console.log( skaitmenuKiekisSkaiciuje( 1.23E+2 ) );     //  123    -> 3
 
+
+console.log('-------');
+console.log('-------');
+console.log('-------');
+
+// didziausias skaicius sarase
+
+function didziausiasSkaiciusSarase( sarasas ){
+    if ( typeof(sarasas) !== 'object' ) {
+        return 'Pateikta netinkamo tipo reikšmė.';
+    }
+    if ( sarasas.length === 0 ) {
+        return 'Pateiktas sąrašas negali būti tuščias.';
+    }
+
+    // logika
+    var didziausias = sarasas[0];
+
+    for ( var i=0; i<sarasas.length; i++ ) {
+        if ( typeof( didziausias ) !== 'number' ||
+             isNaN(didziausias) === true ) {
+            didziausias = sarasas[i+1];
+        }
+        if ( typeof( sarasas[i] ) !== 'number' ||
+             isNaN(sarasas[i]) === true ) {
+            continue;
+        }
+        if ( sarasas[i] > didziausias ) {
+            didziausias = sarasas[i];
+        }
+    }
+
+    if ( typeof( didziausias ) !== 'number' ) {
+        return 'Sarase nepasitaike nei vieno skaiciaus...';
+    }
+
+    return sarasas +': '+ didziausias;
+}
+
+console.log( didziausiasSkaiciusSarase( 'pomidoras' ) );
+console.log( didziausiasSkaiciusSarase( [] ) );
+console.log( didziausiasSkaiciusSarase( true ) );
+console.log( didziausiasSkaiciusSarase( [ '-51', 'as', [] ] ) );
+console.log( didziausiasSkaiciusSarase( [ '-51', 'as', NaN ] ) );
+console.log( didziausiasSkaiciusSarase( [ '-51', 'as', -Infinity ] ) );
+console.log( didziausiasSkaiciusSarase( [ '-51', 'as', Infinity ] ) );
+console.log( didziausiasSkaiciusSarase( [ -51, 'as', -Infinity ] ) );
+console.log( didziausiasSkaiciusSarase( [ -51, 'as', [] ] ) );
+console.log( didziausiasSkaiciusSarase( [ 'as', -51, [] ] ) );
+console.log( didziausiasSkaiciusSarase( [ 'as', [], -51 ] ) );
+console.log( didziausiasSkaiciusSarase( [ 1 ] ) );
+console.log( didziausiasSkaiciusSarase( [ 1, 2, 3 ] ) );
+console.log( didziausiasSkaiciusSarase( [ -5, 78, 14, 0, 18 ] ) );
+console.log( didziausiasSkaiciusSarase( [ 69, 69, 69, 69, 66 ] ) );
+console.log( didziausiasSkaiciusSarase( [ -1, -2, -3, -4, -5, -6, -7, -8 ] ) );
+console.log( didziausiasSkaiciusSarase( [ -2, -3, -4, -5, -1, -6, -7, -8 ] ) );
+
+
+
+var nuo = 5;
+var iki = 10;
+var x = 66;
+
+if ( x>nuo && x<iki ) {
+    console.log('intervale');
+} else {
+    console.log('visa kita');
+}
